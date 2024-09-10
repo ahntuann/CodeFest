@@ -1,5 +1,6 @@
 import action.GetGuner;
 import action.MoveAndAttack;
+import action.SortDistancer;
 import getInfo.GetClosestPlayer;
 import getInfo.GetOtherPlayerNodes;
 import getInfo.GetRestrictedNodes;
@@ -8,6 +9,8 @@ import jsclub.codefest2024.sdk.Hero;
 import jsclub.codefest2024.sdk.base.Node;
 import jsclub.codefest2024.sdk.model.GameMap;
 import jsclub.codefest2024.sdk.model.players.Player;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 import java.io.IOException;
@@ -19,6 +22,7 @@ public class Main {
     private static final String SERVER_URL = "https://cf-server.jsclub.dev";
     private static final String GAME_ID = "173501";
     private static final String PLAYER_NAME = "go go";
+    private static final Logger log = LogManager.getLogger(Main.class);
     private static int step = 0;
 
 
@@ -46,6 +50,10 @@ public class Main {
                         if (p.getIsAlive())
                             otherPlayers.add(p);
                     }
+
+                    List<Player> playerOrdered = SortDistancer.sorter(otherPlayers, player);
+
+                    System.out.println(playerOrdered);
 
 //                    Other Player Nodes
                     List<Node> otherPlayerNodes = GetOtherPlayerNodes.getNodes(otherPlayers);
