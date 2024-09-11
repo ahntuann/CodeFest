@@ -24,19 +24,13 @@ import java.util.Map;
 
 public class Main {
     private static final String SERVER_URL = "https://cf-server.jsclub.dev";
-    private static final String GAME_ID = "181678";
+    private static final String GAME_ID = "145406";
     private static final String PLAYER_NAME = "go go";
     private static final Logger log = LogManager.getLogger(Main.class);
     private static int step = 0;
 
-
-    private static  Map prioroty = new HashMap();
-
-
-
     public static void main(String[] args) throws IOException {
         Hero hero = new Hero(GAME_ID, PLAYER_NAME);
-
 
         Emitter.Listener onMapUpdate = new Emitter.Listener() {
             @Override
